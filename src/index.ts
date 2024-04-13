@@ -1,25 +1,11 @@
-import { Elysia, t } from 'elysia'
-import { PrismaClient } from '@prisma/client'
+import { Elysia } from 'elysia'
+import { groups } from './modules/groups'
 
 const PORT = process.env.PORT || 3333
 
-const db = new PrismaClient()
 
 const app = new Elysia()
-  .get(
-    '/groups',
-    async () => db.group.findMany()
-  )
-  .post(
-    '/groups',
-    async ({ body }) => db.group.create({
-      data: body
-    }), {
-    body: t.Object({
-      name: t.String()
-    })
-  }
-  )
+  .use(groups)
   .listen(PORT)
 
 console.log(
