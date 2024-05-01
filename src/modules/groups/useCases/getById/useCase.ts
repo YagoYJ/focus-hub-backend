@@ -1,7 +1,7 @@
 import { groupRepository } from "../../repository"
 
-async function execute(id: string) {
-    const result = await groupRepository.getById(id)
+async function execute(groupId: string) {
+    const result = await groupRepository.getById(groupId)
 
     return result;
 }

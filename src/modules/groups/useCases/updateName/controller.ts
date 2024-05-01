@@ -4,11 +4,11 @@ import { UpdateGroupNameControllerBody, UpdateGroupNameControllerParams } from "
 import { updateGroupNameUseCase } from "./useCase"
 
 async function handle(
-    { id }: UpdateGroupNameControllerParams,
+    { groupId }: UpdateGroupNameControllerParams,
     { name }: UpdateGroupNameControllerBody
 ) {
     try {
-        const groupExists = await groupRepository.getById(id)
+        const groupExists = await groupRepository.getById(groupId)
         const groupWithName = await groupRepository.getByName(name)
 
         if (!groupExists) {
@@ -19,7 +19,7 @@ async function handle(
             throw groupErrorMessages.EXISTS_GROUP_NAME
         }
 
-        const result = updateGroupNameUseCase.execute({ id, name })
+        const result = updateGroupNameUseCase.execute({ groupId, name })
 
         return result;
     } catch (error: unknown) {

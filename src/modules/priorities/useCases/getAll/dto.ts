@@ -1,6 +1,6 @@
 import { t } from "elysia";
 
-export const getGroupByIdDTO = {
+export const listAllPrioritiesDTO = {
     params: t.Object({
         groupId: t.String()
     })
