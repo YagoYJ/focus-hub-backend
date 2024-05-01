@@ -1,5 +1,5 @@
 export type UpdateGroupNameControllerParams = {
-    id: string
+    groupId: string
 }
 
 export type UpdateGroupNameControllerBody = {
@@ -7,6 +7,6 @@ export type UpdateGroupNameControllerBody = {
 }
 
 export type UpdateGroupNameUseCase = {
-    id: string
+    groupId: string
     name: string
 }

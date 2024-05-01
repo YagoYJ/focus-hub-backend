@@ -1,8 +1,8 @@
 import { groupRepository } from "../../repository";
 import { UpdateGroupNameUseCase } from "./types";
 
-async function execute({ id, name }: UpdateGroupNameUseCase) {
-    const result = await groupRepository.updateName({ id, name })
+async function execute({ groupId, name }: UpdateGroupNameUseCase) {
+    const result = await groupRepository.updateName({ groupId, name })
 
     return result
 }

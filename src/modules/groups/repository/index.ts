@@ -37,10 +37,10 @@ async function create(name: string) {
     return data
 }
 
-async function updateName({ id, name }: UpdateGroupNameRepository) {
+async function updateName({ groupId, name }: UpdateGroupNameRepository) {
     const data = await prisma.group.update({
         where: {
-            id
+            id: groupId
         },
         data: {
             name,

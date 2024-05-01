@@ -1,6 +1,6 @@
 export const groupsRoutes = {
     getAll: "/",
-    getById: "/:id",
+    getById: "/:groupId",
     create: "/",
-    update: "/:id"
+    update: "/:groupId"
 }

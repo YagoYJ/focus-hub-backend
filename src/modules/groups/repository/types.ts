@@ -1,4 +1,4 @@
 export type UpdateGroupNameRepository = {
-    id: string;
+    groupId: string;
     name: string;
 }
