@@ -1,3 +1,13 @@
 export type GetAllPrioritiesControllerParams = {
-    groupId: string
+    params: {
+        groupId: string
+    },
+    query: {
+        limit?: string
+    }
+}
+
+export type GetAllPrioritiesUseCaseParams = {
+    groupId: string;
+    limit?: string;
 }

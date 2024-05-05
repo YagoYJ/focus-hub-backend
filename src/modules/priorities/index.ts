@@ -15,7 +15,7 @@ import { completePriorityDTO } from "./useCases/complete/dto";
 export const priorities = new Elysia({ prefix: "/groups/:groupId/priorities" })
     .get(
         prioritiesRoutes.getAll,
-        ({ params }) => getAllPrioritiesController.handle(params),
+        ({ params, query }) => getAllPrioritiesController.handle({params, query}),
         { ...listAllPrioritiesDTO }
 
     )
