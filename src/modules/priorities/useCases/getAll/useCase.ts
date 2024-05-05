@@ -1,7 +1,8 @@
 import { prioritiesRepository } from "../../repository";
+import { GetAllPrioritiesUseCaseParams } from "./types";
 
-async function execute(groupId: string) {
-    const result = await prioritiesRepository.getAll(groupId)
+async function execute({groupId, limit}: GetAllPrioritiesUseCaseParams) {
+    const result = await prioritiesRepository.getAll({groupId, limit})
 
     return result;
 }

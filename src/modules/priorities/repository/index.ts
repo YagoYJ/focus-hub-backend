@@ -1,11 +1,13 @@
 import { prisma } from "../../../db/prisma";
+import { GetAllPrioritiesUseCaseParams } from "../useCases/getAll/types";
 import { CompletePriorityRepository, CreatePriorityParams, GetByNameParams, UpdatePriorityRepository } from "./types";
 
-function getAll(groupId: string) {
+function getAll({groupId, limit}: GetAllPrioritiesUseCaseParams) {
     const result = prisma.priority.findMany({
         where: {
             groupId
-        }
+        },
+        take: limit ? Number(limit) : undefined
     })
 
     return result;
