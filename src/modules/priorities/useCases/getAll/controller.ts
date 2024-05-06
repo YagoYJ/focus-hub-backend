@@ -1,14 +1,26 @@
-import { GetAllPrioritiesControllerParams } from "./types"
-import { getAllPrioritiesUseCase } from "./useCase"
+import { groupErrorMessages } from "../../../groups/errorMessages";
+import { getGroupByIdUseCase } from "../../../groups/useCases/getById/useCase";
+import { GetAllPrioritiesControllerParams } from "./types";
+import { getAllPrioritiesUseCase } from "./useCase";
 
-function handle({params, query}: GetAllPrioritiesControllerParams) {
-    const {groupId} = params
+async function handle({ params, query }: GetAllPrioritiesControllerParams) {
+  const { groupId } = params;
 
-    const result = getAllPrioritiesUseCase.execute({groupId, ...query})
+  try {
+    const group = await getGroupByIdUseCase.execute(groupId);
 
-    return result
+    if(!group) {
+        throw groupErrorMessages.GROUP_DOES_NOT_EXISTS 
+    }
+
+    const result = getAllPrioritiesUseCase.execute({ groupId, ...query });
+
+    return result;
+  } catch (error: unknown) {
+    throw new Error(error as string);
+  }
 }
 
 export const getAllPrioritiesController = {
-    handle
-}
+  handle,
+};
