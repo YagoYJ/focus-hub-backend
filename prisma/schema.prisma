@@ -19,13 +19,17 @@ model Group {
   id         String     @id @default(uuid())
   name       String     @unique
   priorities Priority[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt @default(now())
 }
 
 model Priority {
-  id          String  @id @default(uuid())
-  name        String  @unique
+  id          String   @id @default(uuid())
+  name        String   @unique
   description String
-  completed   Boolean @default(false)
-  group       Group?  @relation(fields: [groupId], references: [id])
+  completed   Boolean  @default(false)
+  group       Group?   @relation(fields: [groupId], references: [id])
   groupId     String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt @default(now())
 }

@@ -5,9 +5,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
     "start": "bun run src/index.ts",
-    "build": "bun run prisma migrate deploy && bun run prisma generate && bun build ./src/index.ts --target=bun --outfile=index.js && ln -s /usr/lib/x86_64-linux-gnu/libssl.so /lib/libssl.so && ln -s /usr/lib/x86_64-linux-gnu/libssl.so.3 /lib/libssl.so.3 && ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so /lib/libcrypto.so && ln -s /usr/lib/x86_64-linux-gnu/libcrypto.so.3 /lib/libcrypto.so.3"
+    "build": "bun install && bun run prisma migrate deploy && bun run prisma generate"
   },
   "dependencies": {
+    "@elysiajs/cors": "^1.0.2",
     "@prisma/client": "5.12.1",
     "elysia": "latest"
   },
